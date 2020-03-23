@@ -1,0 +1,1 @@
+Works with spike: https://github.com/gradle/gradle/pull/12257
