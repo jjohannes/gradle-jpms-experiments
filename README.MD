@@ -5,3 +5,7 @@ Example for using the JPMS support of Gradle 6.4:
 - [module-c](module-c) A module with JUnit 5 unit (whitebox) tests - using classpath - and integration (blackbox) tests
 - [app](app) Application running as module
 - [module-java8](module-java8) A module that can also be used as a normal library with Java 8
+
+Run the sample:
+- Run tests `./gradlew check`
+- Run modular application `./gradlew app:run`
