@@ -1,4 +1,6 @@
 subprojects {
+    version = "0.9-beta"
+
     // Will add something like this in the future to configure all tasks added by a Java plugin:
     //
     // java {
