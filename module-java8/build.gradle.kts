@@ -24,7 +24,6 @@ val compileJava9 = tasks.register<JavaCompile>("compileJava9") {
     source = java9
     classpath = main.compileClasspath
 
-    println(main.java.outputDir.path)
     options.compilerArgs.addAll(listOf(
             "--release", "9",
             "--patch-module", "org.java8compatible=${main.java.outputDir.path}" // so we can compile to another location
