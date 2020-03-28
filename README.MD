@@ -9,3 +9,5 @@ Example for using the JPMS support of Gradle 6.4:
 Run the sample:
 - Run tests `./gradlew check`
 - Run modular application `./gradlew app:run`
+- Build all `./gradlew build`
+  - Packaged application can be found in:  app/build/distributions/app-1.0-final.zip

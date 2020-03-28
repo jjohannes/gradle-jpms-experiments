@@ -3,3 +3,7 @@ build
 target
 *.iml
 .idea
+bin
+.settings
+.project
+.classpath
