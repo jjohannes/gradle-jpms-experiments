@@ -7,10 +7,13 @@ subprojects {
     version = "0.9-beta"
 
     java {
-        modularClasspathHandling.inferModulePath.set(true)
-        release.set(9)
+        modularity.inferModulePath.set(true)
         withJavadocJar()
         withSourcesJar()
+    }
+
+    tasks.withType<JavaCompile> {
+        options.compilerArgs.addAll(listOf("--release", "9"))
     }
 
     repositories {
