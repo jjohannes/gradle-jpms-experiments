@@ -8,7 +8,6 @@ subprojects {
 
     java {
         modularity.inferModulePath.set(true)
-        withJavadocJar()
         withSourcesJar()
     }
 
