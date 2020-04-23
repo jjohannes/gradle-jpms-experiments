@@ -1,3 +1,5 @@
+import java.nio.file.Files
+
 plugins {
     `java-library`
 }
@@ -18,9 +20,6 @@ main.allSource.source(java9)
 val sourceSetChildPath = "classes/" + java9.name + "/" + main.name
 java9.destinationDirectory.convention(layout.buildDirectory.dir(sourceSetChildPath))
 val compileJava9 = tasks.register<JavaCompile>("compileJava9") {
-    sourceCompatibility = JavaVersion.VERSION_1_9.toString()
-    targetCompatibility = JavaVersion.VERSION_1_9.toString()
-
     source = java9
     classpath = main.compileClasspath
 
@@ -28,11 +27,29 @@ val compileJava9 = tasks.register<JavaCompile>("compileJava9") {
             "--release", "9",
             "--patch-module", "org.java8compatible=${main.java.outputDir.path}" // so we can compile to another location
     ))
+
+    // This additional action is only needed if you want to build multi-release Jar
+    doLast {
+        val destRoot = destinationDirectory.get().asFile
+        val destVersions9 = File(destRoot, "META-INF/versions/9").also { it.mkdirs() }
+        destRoot.listFiles()?.forEach {
+            if (it.name != "META-INF") {
+                Files.move(it.toPath(), File(destVersions9, it.name).toPath())
+            }
+        }
+    }
 }
+tasks.jar {
+    manifest {
+        attributes("Multi-Release" to true)
+    }
+}
+
 var sourceSetOutput = main.output as org.gradle.api.internal.tasks.DefaultSourceSetOutput
 sourceSetOutput.addClassesDir { java9.destinationDirectory.asFile.get() }
 sourceSetOutput.registerCompileTask(compileJava9)
 java9.compiledBy(compileJava9, AbstractCompile::getDestinationDirectory)
+
 tasks.classes {
     dependsOn(compileJava9)
 }
