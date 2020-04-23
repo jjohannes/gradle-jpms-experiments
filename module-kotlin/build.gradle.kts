@@ -15,9 +15,14 @@ dependencies {
 
 // == Integration test setup: you can put this into a buildSrc plugin
 val integTest: SourceSet by sourceSets.creating
+val integTestJarTask = tasks.register<Jar>(integTest.jarTaskName) {
+    archiveClassifier.set("integration-tests")
+    from(integTest.output)
+}
 val integTestTask = tasks.register<Test>("integTest") {
     testClassesDirs = integTest.output.classesDirs
-    classpath = integTest.runtimeClasspath
+    // Make sure we run the 'Jar' containing the tests (and not just the 'classes' folder) so that test resources are also part of the test module
+    classpath = configurations[integTest.runtimeClasspathConfigurationName] + files(integTestJarTask)
 }
 dependencies {
     "integTestImplementation"(project)
