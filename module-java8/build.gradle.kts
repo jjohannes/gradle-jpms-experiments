@@ -4,9 +4,8 @@ plugins {
     id("de.jjohannes.javamodules.java-library")
 }
 
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+tasks.compileJava {
+    options.release.set(8)
 }
 
 val jvm = extensions.create(org.gradle.api.plugins.jvm.internal.JvmPluginExtension::class, "jvm", org.gradle.api.plugins.jvm.internal.DefaultJvmPluginExtension::class)

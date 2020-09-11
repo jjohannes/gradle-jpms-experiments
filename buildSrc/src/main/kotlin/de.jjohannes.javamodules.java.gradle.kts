@@ -14,5 +14,5 @@ java {
 }
 
 tasks.withType<JavaCompile> {
-    options.release.set(9)
+    options.release.convention(9)
 }
