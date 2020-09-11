@@ -1,5 +1,5 @@
 plugins {
-    application
+    id("de.jjohannes.javamodules.java-application")
 }
 
 version = "1.0-final"

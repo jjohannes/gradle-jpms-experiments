@@ -1,7 +1,7 @@
 import java.nio.file.Files
 
 plugins {
-    `java-library`
+    id("de.jjohannes.javamodules.java-library")
 }
 
 java {

@@ -1,5 +1,5 @@
 plugins {
-    `java-library`
+    id("de.jjohannes.javamodules.java-library")
 }
 
 java {
