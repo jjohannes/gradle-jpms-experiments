@@ -1,4 +1,4 @@
-Example for using the JPMS support of Gradle 6.4:
+Example for using the JPMS support available since Gradle 6.4 (current version of the sample requires **Gradle 6.7+**):
 
 - [module-a](module-a) And automatic module with a dependency to a pure library
 - [module-b](module-b) A module with JUnit 4 unit (whitebox) tests - using module patching - and integration (blackbox) tests
