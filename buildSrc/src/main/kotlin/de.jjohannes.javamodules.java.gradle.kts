@@ -3,7 +3,10 @@ plugins {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
+    maven {
+        url = uri("https://repo.gradle.org/gradle/ext-releases-local")
+    }
 }
 
 version = "0.9-beta"

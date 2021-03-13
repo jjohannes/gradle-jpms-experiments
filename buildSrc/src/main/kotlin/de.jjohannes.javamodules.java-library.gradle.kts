@@ -1,4 +1,4 @@
 plugins {
     id("de.jjohannes.javamodules.java")
-    `java-library`
+    id("java-library")
 }

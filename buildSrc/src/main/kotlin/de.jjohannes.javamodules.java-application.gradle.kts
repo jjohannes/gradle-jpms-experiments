@@ -1,4 +1,4 @@
 plugins {
     id("de.jjohannes.javamodules.java")
-    application
+    id("application")
 }
