@@ -11,3 +11,8 @@ Run the sample:
 - Run modular application `./gradlew app:run`
 - Build all `./gradlew build`
   - Packaged application can be found in:  app/build/distributions/app-1.0-final.zip
+- Publish modules to a local repository `./gradlew publish`
+
+If you need to work (and patch) existing legacy JARs, the 
+[de.jjohannes.extra-java-module-info](https://github.com/jjohannes/extra-java-module-info/blob/master/README.md#how-to-use-this-plugin)
+plugin might also come in handy.
