@@ -10,6 +10,7 @@ repositories {
 }
 
 version = "0.9-beta"
+group = "de.jjohannes.javamodules.gradle-jpms-experiments"
 
 java {
     modularity.inferModulePath.set(true)
