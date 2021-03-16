@@ -4,7 +4,7 @@ plugins {
 
 val java8 = sourceSets.create("java8")
 val java11 = sourceSets.create("java11")
-val java15 = sourceSets.create("java15")
+val java15 = sourceSets.create("java15") // 15 is the 'main' variant (Jar without classifier)
 
 java {
     registerFeature("java8") {
