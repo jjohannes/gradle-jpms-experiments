@@ -6,15 +6,17 @@ plugins {
     id("de.jjohannes.javamodules.java-library")
 }
 
-tasks.compileJava {
-    options.release.set(8)
+java {
+    toolchain.languageVersion.convention(JavaLanguageVersion.of(8))
 }
 
 val jvm = extensions.create(JvmPluginExtension::class, "jvm", DefaultJvmPluginExtension::class)
 jvm.utilities.registerJvmLanguageSourceDirectory(sourceSets.main.get(), "java9") {
     withDescription("Java 9 Sources")
     compiledWithJava {
-        options.release.set(9)
+        javaCompiler.set(javaToolchains.compilerFor {
+            languageVersion.set(JavaLanguageVersion.of(9))
+        })
         classpath = sourceSets.main.get().compileClasspath
 
         options.compilerArgs.addAll(listOf(

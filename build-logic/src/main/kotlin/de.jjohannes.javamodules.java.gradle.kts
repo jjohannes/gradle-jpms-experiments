@@ -14,8 +14,5 @@ group = "de.jjohannes.javamodules.gradle-jpms-experiments"
 
 java {
     withSourcesJar()
-}
-
-tasks.withType<JavaCompile> {
-    options.release.convention(9)
+    toolchain.languageVersion.convention(JavaLanguageVersion.of(9))
 }
